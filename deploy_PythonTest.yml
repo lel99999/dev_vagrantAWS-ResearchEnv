@@ -41,7 +41,7 @@
     - epel7
 #   - emacsRH7
 
-    - openjdk1.8
+#   - openjdk1.8
  
 #   - odbc
 #   - postgresql-client
@@ -50,9 +50,9 @@
     - python2RH7
     - python3RH7
     - pyenvRH7
-    - pycharm7
-    - gocd7
-    - stattransfer14
+#   - pycharm7
+#   - gocd7
+#   - stattransfer14
 
 # hosts: research_python
 # become: yes

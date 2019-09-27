@@ -9,7 +9,8 @@ Vagrant.configure('2') do |config|
         aws.access_key_id = aws_config.fetch("access_key_id")
         aws.secret_access_key = aws_config.fetch("secret_access_key")
         aws.keypair_name = 'vagrantAWS-key'
-        aws.instance_type = "t2.micro"
+        aws.instance_type = "t2.medium"
+#       aws.instance_type = "t2.micro"
 #       aws.keypair_name = aws_config.fetch("keypair_name")
         aws.region = 'us-east-1'
         aws.ami = 'ami-0394fe9914b475c53'
@@ -18,7 +19,7 @@ Vagrant.configure('2') do |config|
 #       aws.security_groups = ['default']
         aws.subnet_id = 'subnet-0708d9c83404b507c'
         aws.tags = {
-          'Name'=> "vagrantAWS-PythonRH7"
+          'Name'=> "vagrantAWS-EOD"
         }
 
         aws.block_device_mapping = [{
@@ -40,7 +41,8 @@ Vagrant.configure('2') do |config|
         override.ssh.private_key_path = '~/.ssh/vagrantAWS-key'
       end
       config.vm.provision "ansible" do |ansible|
-        ansible.playbook = "deploy_PythonRH7.yml"
+        ansible.playbook = "deploy_eodrole.yml"
+#       ansible.playbook = "deploy_PythonRH7.yml"
 #       ansible.groups = {
 #         "vagrantAWS" => ["vagrantAWS-Data"]
 #       }
