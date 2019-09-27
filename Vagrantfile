@@ -8,7 +8,7 @@ Vagrant.configure('2') do |config|
 
 #   end
 
-  config.vm.define "ancillary" do |ancil|
+  config.vm.define "vagrantAWS-Ancillary" do |ancil|
     ancil.vm.box = 'aws-dummy'
     ancil.vm.synced_folder ".", "/vagrant", disabled: true
     ancil.vm.provider 'aws' do |aws,override|

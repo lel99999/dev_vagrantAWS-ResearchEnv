@@ -1,4 +1,4 @@
-- hosts: ancillaryRH7
+- hosts: vagrantAWS-Ancillary
   #- hosts: wdcreancil02
   vars:  
     custom_repo: true
@@ -81,20 +81,31 @@
       register: enabled_repos
     - debug:
         msg: "RHEL Enabled Repos: {{ enabled_repos }}" 
-# tasks:
-    - name: download epel
-      shell:  wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -O /tmp/epel-release-latest-7.noarch.rpm   
-    - name: Install epel
-      shell:  yum -y localinstall /tmp/epel*rpm
+  tasks:
+# updated with epel7
+#   - name: download epel
+#     shell:  wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -O /tmp/epel-release-latest-7.noarch.rpm   
+#   - name: Install epel
+#     shell:  yum -y localinstall /tmp/epel*rpm
 
     - name: install X Window System
       shell: yum -y groupinstall "X Window System"
+# replace with yum
+#   - name: install XFCE
+#     shell: yum -y groupinstall "xfce"
 
-    - name: install XFCE
-      shell: yum -y groupinstall "xfce"
+    - name: install XFCE4 Desktop
+      yum:
+        name: "@xfce"
+        state: present
+      register: xfce4desktop
 
-    - name: install Evince
-      shell: yum -y install evince
+#- debug: var="{{ xfce4desktop.stdout }}"
+    - name: update libraries for MATE installation
+      command: yum -y update --enablerepo=epel-testing
+
+#   - name: install Evince
+#     shell: yum -y install evince
     - name: install mousepad
       shell: yum -y install mousepad
 #   - name: create texteditor.desktop
@@ -193,8 +204,9 @@
         enabled=1
         gpgcheck=0' >> /etc/yum.repos.d/local.repo
   roles:
-    - umask
+#   - umask
 #   - devtools
+    - epel7
     - devtools7
 #   - open_office
     - open_officeRH7
