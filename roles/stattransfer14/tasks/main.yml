@@ -15,14 +15,13 @@
   tags:
     - stattransfer
 
-- name: Copy local file to remote
-  copy:
-    src: /files/stlinux64_install
-    dest: /opt/ancillary_local/stlinux64_install
-    remote_src: yes
-    owner: root
-    group: root
-
+# name: Copy local file to remote
+# copy:
+#   src: /files/stlinux64_install
+#   dest: /opt/ancillary_local/stlinux64_install
+#   remote_src: yes
+#   owner: root
+#   group: root
 
 - name: Change owner  permissions
   shell: chown -R root:root {{stattransfer_local_bin_directory}}/stlinux64_install

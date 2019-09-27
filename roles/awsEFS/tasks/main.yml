@@ -1,0 +1,28 @@
+# main.yml - Install EFS Dependencies
+---
+- name: Install nfs-utils
+ #  shell:  yum install "{{ epel_url }}" -y --nogpgcheck
+  yum:
+    name: nfs-utils
+    state: present
+    disable_gpg_check: yes
+
+# mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport mount-target-DNS:/   ~/efs-mount-point  
+- name: Make AWSDATA EFS Mount Points
+  become: yes
+  become_method: sudo
+  shell: mkdir /home/awsdata
+
+- name: Mount AWSDATA
+  become: yes
+  become_method: sudo
+  shell: mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport mount-target-DNS:{{awsdata_dns}}   /home/awsdata
+
+- name: Make AWSWORK EFS Mount Points
+  shell: mkdir /home/awswork
+
+- name: Mount AWSWORK
+  become: yes
+  become_method: sudo
+  shell: mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport mount-target-DNS:{{awswork_dns}} /home/awswork  
+

@@ -1,0 +1,3 @@
+# DNS name of file system is file-system-id.efs.aws-region.amazonaws.com
+awswork_dns: fs-256738c7.efs.us-east-1.amazonaws.com 
+awsdata_dns: fs-d7673835.efs.us-east-1.amazonaws.com
