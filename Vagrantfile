@@ -16,6 +16,7 @@ Vagrant.configure('2') do |config|
 #       aws.keypair_name = aws_config.fetch("keypair_name")
       aws.region = 'us-east-1'
       aws.ami = 'ami-0394fe9914b475c53'
+      aws.security_groups = 'sg-01a0428fe429d1e01'
 #       aws.security_groups = 'sg-08ce8ddb34a878eaf'
 #       aws.security_groups = 'vagrant'
 #       aws.security_groups = ['default']
@@ -70,6 +71,7 @@ Vagrant.configure('2') do |config|
 #       aws.keypair_name = aws_config.fetch("keypair_name")
       aws.region = 'us-east-1'
       aws.ami = 'ami-0394fe9914b475c53'
+      aws.security_groups = 'sg-01a0428fe429d1e01'
 #       aws.security_groups = 'sg-08ce8ddb34a878eaf'
 #       aws.security_groups = 'vagrant'
 #       aws.security_groups = ['default']
