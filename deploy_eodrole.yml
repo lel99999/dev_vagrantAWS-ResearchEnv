@@ -1,5 +1,5 @@
 ---
-- hosts: vagrantAWS-EOD
+- hosts: vagrantAWS-EOD1
 #- hosts: wdcdreseodl05, wdcdreseodl06
   vars:
     custom_repo: true
