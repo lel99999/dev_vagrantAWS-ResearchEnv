@@ -238,7 +238,8 @@
     mode: '2775'
     path: "{{ item }}"
     owner: root
-    group: "{{ restricted_group_name }}"
+    group: root
+#   group: "{{ restricted_group_name }}"
     recurse: yes
   with_items: "{{ r_system_package_dir }}"
   when: envir != "dev.local"
