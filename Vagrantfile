@@ -2,7 +2,7 @@ require 'vagrant-aws'
 require 'yaml'
 
 Vagrant.configure('2') do |config|
-  config.vm.define "vagrantAWS-Ancillary" do |ancil|
+  config.vm.define "vagrantAWS-Ancillary1" do |ancil|
     ancil.vm.box = 'aws-dummy'
     ancil.vm.synced_folder ".", "/vagrant", disabled: true
     ancil.vm.provider 'aws' do |aws,override|
@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
 #       }
 
       aws.tags = {
-        'Name'=> "vagrantAWS-Ancillary"
+        'Name'=> "vagrantAWS-Ancillary1"
       }
       aws.block_device_mapping = [{
         'DeviceName' => '/dev/sda1',
@@ -57,7 +57,7 @@ Vagrant.configure('2') do |config|
       ansible.verbose = "true"
     end
   end
-  config.vm.define "vagrantAWS-RStudio" do |rstudio|
+  config.vm.define "vagrantAWS-RStudio1" do |rstudio|
     rstudio.vm.box = 'aws-dummy'
     rstudio.vm.synced_folder ".", "/vagrant", disabled: true
     rstudio.vm.provider 'aws' do |aws,override|
@@ -81,7 +81,7 @@ Vagrant.configure('2') do |config|
 #       }
 
       aws.tags = {
-        'Name'=> "vagrantAWS-RStudio"
+        'Name'=> "vagrantAWS-RStudio1"
       }
       aws.block_device_mapping = [{
         'DeviceName' => '/dev/sda1',
