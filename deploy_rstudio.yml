@@ -2,6 +2,7 @@
   #- hosts: wdcdev
   vars:
     custom_repo: true
+    deploy_iptables: false
     envir: AWS
   vars_files:
     - ~/RHACCOUNT
