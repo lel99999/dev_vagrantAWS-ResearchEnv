@@ -3,6 +3,7 @@
   vars:
     custom_repo: true
     deploy_iptables: false
+    iptables_config: false
     envir: AWS
   vars_files:
     - ~/RHACCOUNT
