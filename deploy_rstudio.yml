@@ -1,9 +1,11 @@
-- hosts: vagrantAWS-RStudio
+- hosts: vagrantAWS-RStudio1
+#- hosts: vagrantAWS-RStudio
   #- hosts: wdcdev
   vars:
     custom_repo: true
     deploy_iptables: false
     iptables_config: false
+    update_rstudio: true
     envir: AWS
   vars_files:
     - ~/RHACCOUNT

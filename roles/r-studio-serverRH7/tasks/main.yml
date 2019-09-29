@@ -30,6 +30,10 @@
   tags:
     - rstudio-server
 
+- name: Stop R Studio Server
+  command: systemctl stop rstudio-server
+  when: update_rstudio
+
 - name: Verify install
   command: "rstudio-server verify-installation"
   when: update_rstudio
