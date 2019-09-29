@@ -1,4 +1,5 @@
-- hosts: vagrantAWS-Ancillary
+- hosts: vagrantAWS-Ancillary1
+# hosts: vagrantAWS-Ancillary
   #- hosts: wdcreancil02
   vars:  
     custom_repo: true
@@ -96,20 +97,34 @@
 #     become: yes
 #     become_method: sudo
 
-#   - name: install gdown
-#     shell: |
-#       scl enable python27 -- pip install gdown
-#     become: yes
-#     become_method: sudo
+    - name: install python27-python-pip
+      yum:
+        name: python27-python-pip
+        state: present
+
+    - name: install gdown
+      shell: |
+        scl enable python27 -- pip install gdown
+      become: yes
+      become_method: sudo
 #     shell: pip install gdown  
 #     yum:
 #       name: gdown
 #       state: present
 #       disable_gpg_check: yes
 
+    - name: check if file is already there
+      stat:
+        path: /tmp/ancilRH7_repo.tar.gz
+      register: ancilrepo
+
 #     Already secure copy to destination host
     - name: use gdown to download and build local repo
-      shell: gdown https://drive.google.com/uc?id=1qaZH9_SrGyjHjWT3P2WtvZAhEkP9YG1Z -O /tmp/ancilRH7_repo.tar.gz
+      become: yes
+      become_method: sudo
+      command: /opt/rh/python27/root/usr/bin/gdown https://drive.google.com/uc?id=1qaZH9_SrGyjHjWT3P2WtvZAhEkP9YG1Z -O /tmp/ancilRH7_repo.tar.gz
+#     shell: /opt/rh/python27/root/usr/bin/gdown https://drive.google.com/uc?id=1qaZH9_SrGyjHjWT3P2WtvZAhEkP9YG1Z -O /tmp/ancilRH7_repo.tar.gz
+      when: ancilrepo.stat.exists == false
 
 #     shell: gdown https://drive.google.com/uc?id=139Z0MfyT0WVWIzP_uwM2KxPCrfYs_vUV
 #   - name: Install pip
