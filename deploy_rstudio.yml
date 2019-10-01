@@ -62,6 +62,7 @@
     - r-studio-server-configRH7
 #   - r-shinyRH7
 #   - r-shiny-configRH7
+    - awsEFS
 
 # hosts: research_python
 # become: yes
