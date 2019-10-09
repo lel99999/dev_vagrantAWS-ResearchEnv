@@ -45,9 +45,8 @@ Vagrant.configure('2') do |config|
 #         'Ebs.VolumeType' => AWS_DEVICE_VOL_TYPE,
       }]
 
-      override.ssh.username = "ec2-user"
-#       override.ssh.private_key_path = aws_config.fetch("keypair_path")
-      override.ssh.private_key_path = '~/.ssh/vagrantAWS-key'
+      override.ssh.username = aws_config.fetch("ssh_username")
+      override.ssh.private_key_path = aws_config.fetch("private_key_path")
     end
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy_ancillaryRH7.yml"
@@ -98,9 +97,8 @@ Vagrant.configure('2') do |config|
 #         'Ebs.VolumeType' => AWS_DEVICE_VOL_TYPE,
       }]
 
-      override.ssh.username = "ec2-user"
-#       override.ssh.private_key_path = aws_config.fetch("keypair_path")
-      override.ssh.private_key_path = '~/.ssh/vagrantAWS-key'
+      override.ssh.username = aws_config.fetch("ssh_username")
+      override.ssh.private_key_path = aws_config.fetch("private_key_path")
     end
     config.vm.provision "ansible" do |ansible|
 #     ansible.playbook = "deploy_ancillaryRH7.yml"
@@ -151,9 +149,8 @@ Vagrant.configure('2') do |config|
 #         'Ebs.VolumeType' => AWS_DEVICE_VOL_TYPE,
       }]
 
-      override.ssh.username = "ec2-user"
-#       override.ssh.private_key_path = aws_config.fetch("keypair_path")
-      override.ssh.private_key_path = '~/.ssh/vagrantAWS-key'
+      override.ssh.username = aws_config.fetch("ssh_username")
+      override.ssh.private_key_path = aws_config.fetch("private_key_path")
     end
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy_eodrole.yml"
