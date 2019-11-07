@@ -125,7 +125,7 @@ Vagrant.configure('2') do |config|
 #       aws.instance_type = "t2.micro"
       aws.region = aws_config.fetch("aws_region")
       aws.ami = aws_config.fetch("aws_ami")
-      aws.security_groups = aws_config.fetch("security_groups)"
+      aws.security_groups = aws_config.fetch("security_groups")
 #       aws.security_groups = 'vagrant'
 #       aws.security_groups = ['default']
       aws.subnet_id = aws_config.fetch("subnet_id")

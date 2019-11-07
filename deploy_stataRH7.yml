@@ -1,4 +1,4 @@
-- hosts: stataRH7
+- hosts: vagrantAWS-Stata16
   vars:
     custom_repo: true
     deploy_iptables: true
